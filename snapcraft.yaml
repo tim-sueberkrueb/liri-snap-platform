@@ -43,6 +43,7 @@ parts:
             - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/lib/qt5/lib/cmake/
             - -DCMAKE_BUILD_TYPE=Release
             - -DCMAKE_INSTALL_PREFIX=/
+            - -DCMAKE_INSTALL_LIBDIR=lib/qt5/lib
             - -DKDE_INSTALL_QMLDIR=/lib/qt5/qml
             - -DECM_DIR=/usr/share/ECM/cmake
         prepare: |
