@@ -3,8 +3,6 @@
 # Launch script for Liri Apps using the Liri App Platform
 # Based on https://github.com/ubuntu/snapcraft-desktop-helpers
 
-echo "launching ..."
-
 needs_update=true
 
 . ~/.last_revision 2>/dev/null || true
@@ -44,8 +42,6 @@ export SNAP_LAUNCHER_ARCH_TRIPLET=$ARCH
 #########################################
 # Liri platform runtime selection #
 #########################################
-
-echo "Liri platform runtime selection"
 
 if [ -d $SNAP/liri-app-platform ]; then
   RUNTIME=$SNAP/liri-app-platform
@@ -248,8 +244,6 @@ fi
 # of the system Compose files
 export QTCOMPOSE=$RUNTIME/usr/share/X11/locale
 
-echo "Qt Libs, Modules and helpers"
-
 # Qt Libs, Modules and helpers
 if [ "$USE_qt5" = true ]; then
   export LD_LIBRARY_PATH=$RUNTIME/lib/qt5/lib:$LD_LIBRARY_PATH
@@ -278,8 +272,6 @@ export APP_DIR=$SNAP
 # Use GTK styling for running under Unity 7
 export GTK_PATH=$RUNTIME/usr/lib/$ARCH/gtk-2.0
 
-echo "Gdk-pixbuf loaders"
-
 # Gdk-pixbuf loaders
 export GDK_PIXBUF_MODULE_FILE=$XDG_CACHE_HOME/gdk-pixbuf-loaders.cache
 export GDK_PIXBUF_MODULEDIR=$RUNTIME/usr/lib/$ARCH/gdk-pixbuf-2.0/2.10.0/loaders
@@ -289,8 +281,6 @@ if [ $needs_update = true ]; then
     $RUNTIME/usr/lib/$ARCH/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders > $GDK_PIXBUF_MODULE_FILE
   fi
 fi
-
-echo "Icon themes cache"
 
 # Icon themes cache
 if [ $needs_update = true ]; then
@@ -314,6 +304,5 @@ if [ $needs_update = true ]; then
   done
 fi
 
-echo "starting ..."
-
 exec "$@"
+
